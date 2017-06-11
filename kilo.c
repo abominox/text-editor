@@ -10,7 +10,7 @@ void disableRawMode() {
 
 void enableRawMode() {
   tcgetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios);
-  atextit(disableRawMode);
+  atexit(disableRawMode);
 
   struct termios raw = orig_termios;
   raw.c_lflag &= ~(ECHO);
